@@ -1,0 +1,63 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+#Install required libraries
+
+```{r}
+#install.packages(plotly) # Only do this once
+```
+
+#load libraries
+```{r}
+library("plotly")
+```
+
+#load data:
+This dataset comes built-in with base R. Later I'll show you how to read in a spreadsheet.
+```{r}
+head(mtcars) #buolt-in dataset 
+``` 
+
+Working with  data
+Dataframe[row,column]
+```{r}
+mtcars[1:10,c("mpg", "cyl", "hp") ]
+```
+
+
+visualize
+
+```{r}
+plot(mtcars[,c("mpg", "hp")])
+```
+
+
+```{r}
+means <- kmeans(as.matrix(mtcars[,c("mpg", "hp", "cyl")]), centers = 3)
+
+mtcars$cluster <- means$cluster
+```
+
+
+```{r}
+
+
+fig <- plot_ly(mtcars, x = ~mpg, y = ~hp, z = ~cyl,
+               marker = list(color = ~cluster, colors = c('#BF382A', '#0C4B8E', '#BCBD22'), showscale = TRUE))
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'Weight'),
+                                   yaxis = list(title = 'Gross horsepower'),
+                                   zaxis = list(title = '1/4 mile time')),
+                      annotations = list(
+                        x = 1.13,
+                        y = 1.05,
+                        text = 'Miles/(US) gallon',
+                        xref = 'paper',
+                        yref = 'paper',
+                        showarrow = FALSE
+                        ))
+fig
+```
