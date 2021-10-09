@@ -18,7 +18,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 print('code goes here!')
 
-
 ```
 
 
@@ -30,7 +29,7 @@ print('code goes here!')
 
 ```{r Print a statement 1}
 
-## print() is a function to print a statement
+#print() is a function to print a statement
 
 print('code goes here!')
 
@@ -41,11 +40,12 @@ print('code goes here!')
 * Let's start by making an assignment and inspecting the object we created.
 
 ```{r First R Object}
+x <-  10*15
+```
 
-x <- 10*5
 
+```{r First R Object}
 x
-
 ```
 
 ### Names
@@ -62,7 +62,7 @@ this_works
 
 ```{r Names that do not work for objects, eval = FALSE}
 
-# this_doesn't_work <- 10*5
+this_doesnt_work <- 10*5
 
 ```
 
@@ -80,7 +80,7 @@ a_very_long_name <- 7^2
 
 ```{r Using Tab to Test out the Completion Facility in RStudio, eval = FALSE}
 
-a_very
+a_very_long_name
 
 ```
 
@@ -91,8 +91,9 @@ a_very
 ```{r R is case-sensitive and does not like typos, eval = FALSE}
 # What happens if you run:
 
-a_vry_long_name
+a_very_long_name
 
+A_very_long_name <- 10
 A_very_long_name
 
 ```
@@ -112,7 +113,6 @@ A_very_long_name
 ## Defining the character vector:
 
 character_vector <- c("ET", "phone", "home", "ET", "phone", "home")
-
 ```
 
 ### Checking the structure of the vector using `str()`
@@ -164,7 +164,7 @@ character_vector
 ```{r Define a numeric vector}
 
 numeric_vector <- c(1:5) 
-
+numeric_vector
 ```
 
 ### Check the structure using `str()`
@@ -180,7 +180,7 @@ str(numeric_vector)
 
 ```{r Take the first two elements from a numeric vector}
 
-numeric_vector[1:2]
+numeric_vector[3:5]
 
 ```
 
@@ -191,8 +191,9 @@ Trying uncommenting and running the line below:
 
 ```{r We always need to use c() to specify multiple non-consecutive positions}
 
-# numeric_vector[1,3]
+numeric_vector[1,3]
 
+numeric_vector[c(1,3)]
 ```
 
 

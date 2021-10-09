@@ -18,25 +18,29 @@ library("plotly")
 #load data:
 This dataset comes built-in with base R. Later I'll show you how to read in a spreadsheet.
 ```{r}
-head(mtcars) #buolt-in dataset 
+head(mtcars) #built-in dataset 
 ``` 
 
 Working with  data
 Dataframe[row,column]
 ```{r}
-mtcars[1:10,c("mpg", "cyl", "wt") ]
+mtcars[1:10,c("mpg", "cyl", "wt")]
+```
+
+```{r}
+mtcars[,c("mpg", "hp")]
 ```
 
 
 visualize
 
 ```{r}
-plot(mtcars[,c("mpg", "hp")])
+plot(mtcars)
 ```
 
 
 ```{r}
-means <- kmeans(as.matrix(mtcars[,c("mpg", "hp", "wt")]), centers = 3)
+means <- kmeans(as.matrix(mtcars[,c("qsec", "hp", "cyl")]), centers = 3)
 
 mtcars$cluster <- means$cluster
 ```
@@ -45,16 +49,16 @@ mtcars$cluster <- means$cluster
 ```{r}
 
 
-fig <- plot_ly(mtcars, x = ~mpg, y = ~hp, z = ~wt,
+fig <- plot_ly(mtcars, x = ~cyl, y = ~hp, z = ~qsec,
                marker = list(color = ~cluster, colors = c('#BF382A', '#0C4B8E', '#BCBD22'), showscale = TRUE))
 fig <- fig %>% add_markers()
-fig <- fig %>% layout(scene = list(xaxis = list(title = 'm'),
+fig <- fig %>% layout(scene = list(xaxis = list(title = 'wt'),
                                    yaxis = list(title = 'Gross horsepower'),
                                    zaxis = list(title = '1/4 mile time')),
                       annotations = list(
                         x = 1.13,
                         y = 1.05,
-                        text = 'Miles/(US) gallon',
+                        text = 'wt',
                         xref = 'paper',
                         yref = 'paper',
                         showarrow = FALSE
