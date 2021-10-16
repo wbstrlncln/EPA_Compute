@@ -31,7 +31,7 @@ print('code goes here!')
 
 #print() is a function to print a statement
 
-print('code goes here!')
+print("code goes here!")
 
 ```
 
@@ -163,6 +163,8 @@ character_vector
 
 ```{r Define a numeric vector}
 
+1:5
+
 numeric_vector <- c(1:5) 
 numeric_vector
 ```
@@ -172,7 +174,6 @@ numeric_vector
 ```{r Check the structure of a numeric vector}
 
 str(numeric_vector)
-
 ```
 
 
@@ -193,7 +194,7 @@ Trying uncommenting and running the line below:
 
 numeric_vector[1,3]
 
-numeric_vector[c(1,3)]
+numeric_vector[c(1,5)]
 ```
 
 
@@ -201,7 +202,7 @@ Note that if we want, we can only select the 1 and 3 or 1, 3, and 4 elements usi
 
 ```{r Use c() to specify non-consecutive positions}
 
-numeric_vector[c(1,3:4)]
+numeric_vector[c(1,5,2:4)]
 
 ```
 
@@ -228,7 +229,17 @@ str(numeric_vector2)
 * We want to make our vector numeric so, `<structure>` =  numeric
 
 ```{r Change the structure of a numeric vector using as. functions}
+number <- "1"
 
+number <- as.numeric(number)
+str(number)
+
+
+<- as.numeric(mat_iris[,1])
+```
+
+
+```{r Change the structure of a numeric vector using as. functions}
 numeric_vector <- as.numeric(numeric_vector)
 
 str(numeric_vector)
@@ -241,6 +252,8 @@ str(numeric_vector)
 * Example 2: Change character to factor. 
 
 ```{r Change the structure of a character vector using as. functions}
+
+character_vector <- c("ET", "phone", "home", "ET", "phone", "home")
 
 character_vector <- as.factor(character_vector)
 
@@ -266,6 +279,8 @@ numeric_vector*3
 
 numeric_vector^2
 
+numeric_vector <- 1:5
+
 ```
 
 ### Divide vectors of the same length
@@ -280,6 +295,18 @@ numeric_vector/x
 
 ```
 
+```{r}
+x <- seq(from = 1, to = 21, by = 4)
+
+x
+
+numeric_vector/x
+
+ 1/21
+
+```
+
+
 ### Subtract or add vectors of the same length
 
 
@@ -288,6 +315,10 @@ numeric_vector/x
 x - numeric_vector
 
 ```
+```{r}
+numeric_vector
+```
+
 
 ### Many functions are designed for vectors
 
@@ -314,7 +345,8 @@ Hint: use length() to find out the last element
 
 ```{r Take the last two elements of the numeric vector, eval = FALSE}
 
-numeric_vector[]
+length(numeric_vector)
+numeric_vector[c(4:5)]
 
 ```
 
@@ -325,7 +357,8 @@ Hint: you can use `length()` to find out how many elements there are in the char
 
 ```{r Take the first and last elements of the character_vector, eval = FALSE}
 
-character_vector[]
+length(character_vector)
+character_vector[c(1,6)]
 
 ```
 
@@ -333,7 +366,7 @@ character_vector[]
 
 ```{r Divide the numeric vector by 3, eval = FALSE}
 
-numeric_vector
+numeric_vector/3
 
 ```
 
@@ -343,7 +376,7 @@ numeric_vector
 
 y <- c(5:1)
 
-
+numeric_vector*y
 
 ```
 
@@ -352,10 +385,12 @@ y <- c(5:1)
 
 ```{r Why does dividing numeric_vector by the object w not work, eval = FALSE}
 
-w <- c(1:4)
+w <- c(1:6)
 
 numeric_vector/w
+1/6
 
+length(w)
 ```
 
 
@@ -364,7 +399,6 @@ numeric_vector/w
 ```{r Importing Packages, eval = TRUE}
 
 library(tidyverse)
-
 ```
 
 ## Functions
@@ -380,7 +414,7 @@ Let's take a look at `seq()`, which makes regular sequences of numbers.
 
 ```{r Autocompleting using TAB, eval = FALSE}
 
-se
+seq()
 
 ```
 
@@ -400,6 +434,7 @@ seq(1,10)
 
 ?seq
 
+
 ```
 
 ### How are function arguments resolved?
@@ -417,7 +452,7 @@ And what about:
 
 ```{r How are function arguments resolved part 2, eval = T}
 
-seq(to = 10, from = 1)
+seq(to = 1, from = 10)
 
 ```
 
@@ -429,7 +464,7 @@ R resolves **first by name and then by position**
 
 ```{r Storing and printing objects using parentheses, eval = TRUE}
 
-(y <- seq(from = 1, to = 10))
+print(y <- seq(from = 1, to = 10))
 
 ```
 
