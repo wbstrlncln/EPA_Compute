@@ -44,10 +44,6 @@ x <-  10*15
 ```
 
 
-```{r First R Object}
-x
-```
-
 ### Names
 
 ```{r Names that work for objects}
@@ -235,11 +231,11 @@ number <- as.numeric(number)
 str(number)
 
 
-<- as.numeric(mat_iris[,1])
+as.numeric(mat_iris[,1])
 ```
 
 
-```{r Change the structure of a numeric vector using as. functions}
+```{r Change the structure of a numeric vector using as. functions2}
 numeric_vector <- as.numeric(numeric_vector)
 
 str(numeric_vector)
@@ -518,8 +514,12 @@ The functions for reading in the data take the same basic form
 
 my_file <- file.path("data", "gapminder.csv")
 
+my_file
+
 gapminder <- read_csv(file = my_file)
 
+
+getwd() # prints the current directory
 ```
 
 * First you need to specify the **name of the data frame** you want to store your data in. 
@@ -593,6 +593,10 @@ str(gapminder)
 
 ```{r Changing gapminder characters to factors}
 
+gapminder$test <- "test"
+
+gapminder
+
 gapminder$country <- as.factor(gapminder$country)
 gapminder$continent <- as.factor(gapminder$continent)
 
@@ -644,7 +648,6 @@ tail(gapminder)
 ```{r Data Summary, eval = FALSE}
 
 summary(gapminder)
-
 ```
 
 5. What years are covered in the data frame?
@@ -671,8 +674,9 @@ unique(gapminder$country)
 If we wanted to get the first value from the first row and column in the dataframe we could use:
 
 ```{r Select the first element}
+#Row x Column
 
-gapminder[1,1]
+gapminder[1,2]
 
 ```
 
@@ -683,7 +687,7 @@ If we wanted the whole first row we could use:
 
 ```{r Select the first row}
 
-gapminder[1,]
+gapminder[c(10:20),]
 
 ```
 
@@ -703,7 +707,7 @@ If we wanted the first 5 rows and the first and third columns we could use:
 
 ```{r Select the first 5 rows and first and third columns}
 
-gapminder[1:5, c(1,3)]
+gapminder[1:20, c(1,5)]
 
 ```
 
@@ -740,7 +744,7 @@ pop <- gapminder[]
 
 ```{r Extract 5th row and 6th column, eval = FALSE}
 
-gapminder[]
+gapminder[5, 6]
 
 ```
 
@@ -752,7 +756,7 @@ Hint: look back to how we selected row 1 and all columns.
 
 ```{r Select columns gdpPercap and pop, eval = FALSE}
 
-gapminder[]
+gapminder[, c("gdpPercap", "pop")]
 
 ```
 
@@ -762,5 +766,21 @@ gapminder[]
 
  sub_lifeExp <- gapminder[c(5, 20, 44), "lifeExp"]
 
+```
+
+```{r}
+
+library(d)
+All_2007 <- gapminder %>%
+  filter(year == "2007") %>%
+  arrange(desc(lifeExp)) 
+  
+
+library(ggplot2)
+# Basic scatter plot
+ggplot(gapminder %>% filter(year %in% c("1992","1997", "2002", "2007")), aes(x=gdpPercap, y=lifeExp, shape=continent, color=continent)) + 
+  geom_point() + 
+  facet_grid(cols = vars(year))
+  
 ```
 
