@@ -1,0 +1,61 @@
+---
+title: "NYC Flights R Notebook"
+output: html_notebook
+---
+
+Read everything up to section 5.3 in the R for data science book for reference: https://r4ds.had.co.nz/transform.html
+Here is a guide on R operators if you need it: https://www.statmethods.net/management/operators.html
+
+`nycflights13` library: Airline on-time data for all flights departing NYC in 2013. Also includes useful 'metadata' on airlines, airports, weather, and planes.
+
+```{r}
+#You only need to run this cell once to install these library onto your computer if they haven't already been installed. 
+install.packages("nycflights13")
+install.packages("tidyverse")
+```
+
+Here we are just going to load the `tidyverse` library that contains the functoions to manipulate and visualize our data, and the `nycflights13` library to gain access to the flights data.
+```{r} 
+library(nycflights13) 
+library(tidyverse)
+```
+
+opens`?` before data set loaded from a library such as `nycflights13`  help window
+```{r}
+?flights
+```
+
+Create a dataframe object from the flight data in the `nycflights13` library. Notice that we are specifying the librery on the left hand side of the `::` and the data set we want to load on the right. This is a bit different from loading a raw csv file that I've shown previously. Run the cell below to see the data. How many flights departed NYC in 2013?
+```{r}
+flights <- nycflights13::flights
+flights
+```
+This data set is large, so we really need to learn how to filter down to the data we want to analyze.
+
+## Challange
+
+A) Find all flights that:
+
+  1. Had an arrival delay of two or more hours
+  2. Flew to Houston (IAH or HOU)
+  3. Were operated by United, American, or Delta
+  4. Departed in summer (July, August, and September)
+  5. Arrived more than two hours late, but didn’t leave late
+  6. Were delayed by at least an hour, but made up over 30 minutes in flight
+  7. Departed between midnight and 6am (inclusive)
+
+
+#### 1. Had an arrival delay of two or more hours ####
+
+Remember we discussed the pipe operator last week:
+
+* `%>%` = **"and then"**
+
+It allows us to perform operations on our data set in a sequence. First we enter the data frame we want to manipulate, then pipe to the first function and so on... Here we filtering the flights data to find flights that had an arrival delay of 2 hours or more. 
+
+```{r}
+flights %>%
+  filter(arr_delay >=2) 
+```
+
+
