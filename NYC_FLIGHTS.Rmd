@@ -14,7 +14,7 @@ install.packages("nycflights13")
 install.packages("tidyverse")
 ```
 
-Here we are just going to load the `tidyverse` library that contains the functoions to manipulate and visualize our data, and the `nycflights13` library to gain access to the flights data.
+Here we are just going to load the `tidyverse` library that contains the functions to manipulate and visualize our data, and the `nycflights13` library to gain access to the flights data.
 ```{r} 
 library(nycflights13) 
 library(tidyverse)
