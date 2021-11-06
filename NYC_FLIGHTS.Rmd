@@ -20,7 +20,7 @@ library(nycflights13)
 library(tidyverse)
 ```
 
-opens`?` before data set loaded from a library such as `nycflights13`  help window
+opens `?` before data set loaded from a library such as `nycflights13`  help window.
 ```{r}
 ?flights
 ```
