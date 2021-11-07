@@ -20,11 +20,8 @@ library(nycflights13)
 library(tidyverse)
 ```
 
-<<<<<<< HEAD
-opens `?` before data set loaded from a library such as `nycflights13`  help window.
-=======
+
 The question mark `?` before a data set loaded from a library such as `nycflights13` opens the help window, and gives inforamtion about the variables in the dataset.
->>>>>>> ed5a3394a0fd9639be1db11537b42b505deb6217
 ```{r}
 ?flights
 ```
