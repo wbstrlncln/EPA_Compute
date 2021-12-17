@@ -3,3 +3,16 @@ title: "R Notebook"
 output: html_notebook
 ---
 
+```{r}
+library(tidyverse)
+library(tools)
+```
+
+```{r}
+list.files(recursive = T, full.names = T)
+```
+
+```{r}
+plot(mtcars)
+```
+
