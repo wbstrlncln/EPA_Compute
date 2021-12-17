@@ -50,7 +50,7 @@ x <-  10*15
 
 this_works <- 10*5
 
-this_works
+this_works*
 
 ```
 
